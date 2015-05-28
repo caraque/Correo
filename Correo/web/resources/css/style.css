@@ -1,0 +1,56 @@
+.panelPrincipal {
+    height: 470px !important;
+    width: 547px !important;
+    position: absolute !important;
+    top: 9% !important;
+    left: 29% !important;
+    border-radius: 45px 45px 4px 45px !important;
+    border-bottom-left-radius: 100%70px !important;
+    border-bottom-right-radius: 100%70px !important;
+}
+
+.panelCorreo{
+    border-radius: 14px 14px 0px 0px !important;
+}
+
+.titulo {
+    position: relative;
+    left: 20%;
+}
+
+.panelContenido {
+    height: 220px;
+    border-radius: 0px 0px 45px 45px !important;
+}
+
+.textContenido {
+    height: 150px;
+    width: 462px;
+    resize: none;
+}
+
+.inputText {
+    width: 230%
+}
+
+.enviar {
+    position: absolute;
+    top: 90%;
+    right: 40%;
+}
+
+.dialog{
+    height: 169px !important;
+    left: 480px !important;
+    top: 30% !important;
+    width: 438px !important;
+}
+
+.ui-dialog-content{
+    height: 74px !important;
+}
+
+.buttonPass{
+    position: absolute !important;
+    left: 144px !important;
+}

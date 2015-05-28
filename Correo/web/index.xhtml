@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <link rel="stylesheet" href="resources/css/style.css"/>
+</h:head>
+<h:body>
+    <h:form id="form" enctype="multipart/form-data">
+        <p:panel id="panelPrincipal" styleClass="panelPrincipal">
+            <p:outputLabel value="Estructure el correo que desea enviar" styleClass="titulo"/>
+            <p:panel id="panelCorreo" styleClass="panelCorreo">
+                <table>
+                    <tr>
+                        <td>
+                            <p:outputLabel for="textDe" value="De: "/>
+                        </td>
+                        <td>
+                            <p:inputText id="textDe" styleClass="inputText" value="#{correo.correoDe}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p:outputLabel for="textDestinatario" value="Para: "/>
+                        </td>
+                        <td>
+                            <p:inputText id="textDestinatario" styleClass="inputText" value="#{correo.correoPara}"/>
+                        </td>
+                    </tr>
+                </table>
+            </p:panel>
+            <p:panel id="panelTitulo">
+                <table>
+                    <tr>
+                        <td>
+                            <p:outputLabel for="textTitulo" value="Título"/>
+                        </td>
+                        <td>
+                            <p:inputText id="textTitulo" styleClass="inputText" value="#{correo.correoTitulo}"/>
+                        </td>
+                    </tr>
+                </table>
+            </p:panel>
+            <p:panel id="panelContenido" styleClass="panelContenido">
+                <table>
+                    <tr>
+                        <td>
+                            <p:outputLabel for="textContenido" value="Ingrese el cuerpo de su correo"
+                                           styleClass="titulo"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p:inputTextarea autoResize="false" id="textContenido" value="#{correo.correoContenido}" styleClass="textContenido"/>
+                        </td>
+                    </tr>
+                </table>
+            </p:panel>
+            <!--<p:graphicImage value="#correo.imagenEnviar}"/>-->
+            <p:commandButton value="Enviar" onclick="PF('password').show();" type="button" styleClass="enviar" process=":form"/>
+
+            <p:dialog header="Ingresa la contraseña de tu correo"
+            widgetVar="password" modal="true" dir="ltr" width="400" footer="La contraseña pertenece al correo procedente 'De'."
+            resizable="false" styleClass="dialog">
+                <table>
+                    <tr>
+                        <td>
+                            <p:outputLabel for="textPass" value="Contraseña de correo: "/>
+                        </td>
+                        <td>
+                            <p:inputText id="textPass" type="password" style="width: 220px;" value="#{correo.passCorreo}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p:commandButton value="Aceptar" action="#{correo.enviarCorreo}" styleClass="buttonPass" onclick="PF('password').hide()" />
+                        </td>
+                    </tr>
+                </table>
+            </p:dialog>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
