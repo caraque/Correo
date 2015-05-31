@@ -51,33 +51,41 @@
                     </tr>
                     <tr>
                         <td>
-                            <p:inputTextarea autoResize="false" id="textContenido" value="#{correo.correoContenido}" styleClass="textContenido"/>
+                            <p:inputTextarea autoResize="false" id="textContenido" value="#{correo.correoContenido}"
+                                             styleClass="textContenido"/>
                         </td>
                     </tr>
                 </table>
             </p:panel>
             <!--<p:graphicImage value="#correo.imagenEnviar}"/>-->
-            <p:commandButton value="Enviar" onclick="PF('password').show();" type="button" styleClass="enviar" process=":form"/>
+            <p:commandButton value="Enviar" onclick="PF('password').show();" type="button" styleClass="enviar"
+                             process=":form"/>
 
             <p:dialog header="Ingresa la contraseña de tu correo"
-            widgetVar="password" modal="true" dir="ltr" width="400" footer="La contraseña pertenece al correo procedente 'De'."
-            resizable="false" styleClass="dialog">
+                      widgetVar="password" modal="true" dir="ltr" width="400"
+                      footer="La contraseña pertenece al correo procedente 'De'."
+                      resizable="false" styleClass="dialog">
                 <table>
                     <tr>
                         <td>
                             <p:outputLabel for="textPass" value="Contraseña de correo: "/>
                         </td>
                         <td>
-                            <p:inputText id="textPass" type="password" style="width: 220px;" value="#{correo.passCorreo}"/>
+                            <p:inputText id="textPass" type="password" style="width: 220px;"
+                                         value="#{correo.passCorreo}"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <p:commandButton value="Aceptar" action="#{correo.enviarCorreo}" styleClass="buttonPass" onclick="PF('password').hide()" />
+                            <p:commandButton value="Aceptar" action="#{correo.enviarCorreo}" styleClass="buttonPass"
+                                             onclick="PF('password').hide()" update="panelEstado" />
                         </td>
                     </tr>
                 </table>
             </p:dialog>
+                <p:panel id="panelEstado" styleClass="panelEstado" visible="#{correo.visible}">
+                    <p:outputLabel value="#{correo.mensaje}" styleClass="estadoMensaje"/>
+                </p:panel>
         </p:panel>
     </h:form>
 </h:body>
