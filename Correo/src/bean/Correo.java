@@ -27,19 +27,12 @@ public class Correo implements Serializable {
     private String passCorreo;
     private String host;
     private String puerto;
-    private boolean disabled;
+    private boolean visible;
 
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
 
     @PostConstruct
     public void init() {
-        disabled = true;
+        visible = false;
         imagenEnviar = "/resources/img/email_accept.ico";
     }
 
@@ -47,6 +40,7 @@ public class Correo implements Serializable {
 
         host = validarCorreo();
         Transport transport = null;
+        mensaje = "Enviando correo";
 
         Properties properties = new Properties();
         properties.setProperty("mail.smtp.host", host);  //smtp.gmail.com
@@ -68,10 +62,10 @@ public class Correo implements Serializable {
             transport.connect(correoDe, passCorreo);
             transport.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
             transport.close();
-            System.out.println("El correo se ha enviado exitosamente");
+            mensaje ="El correo se ha enviado exitosamente";
         } catch (MessagingException e) {
             //e.printStackTrace();
-            System.out.println("Ocurrió un error y no se envió el correo");
+           mensaje = "Ocurrió un error y no se envió el correo";
         }
     }
 
@@ -89,8 +83,12 @@ public class Correo implements Serializable {
         }
     }
 
-    public void isDisabled() {
-        disabled = true;
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
     }
 
     public String getCorreoDe() {
@@ -156,4 +154,13 @@ public class Correo implements Serializable {
     public void setPuerto(String puerto) {
         this.puerto = puerto;
     }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
 }
